@@ -13,7 +13,7 @@
           <img src="{{asset('gambar/logo.jpg')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Pengaduadfght</a>
+          <a href="#" class="d-block">Pengaduan</a>
         </div>
       </div>
 
@@ -38,33 +38,33 @@
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Starter Pages
+                Menu 
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <!-- <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active">
+                <a href="#" class="nav-link active"> -->
                   <!-- <i class="far fa-circle nav-icon"></i>
                   <p>Active Page</p> -->
-                </a>
-              </li>
-              <li class="nav-item">
+                <!-- </a>
+              </li> -->
+              <!-- <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <!-- <i class="far fa-circle nav-icon"></i>
-                  <p>Inactive Page</p> -->
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Inactive Page</p>
                 </a>
-              </li>
-            </ul>
-          </li>
+              </li> -->
+            <!-- </ul>
+          </li> -->
           <li class="nav-item">
             <a href="{{route('index') }}" class="nav-link">
               Data Pengaduan
-              <!-- <i class="nav-icon fas fa-th"></i>
-              <p>
-                Simple Link
-                <span class="right badge badge-danger">New</span>
-              </p> -->
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('/tanggapan/index') }}" class="nav-link">
+              Data tanggapan
             </a>
           </li>
         </ul>

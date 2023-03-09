@@ -15,7 +15,7 @@ class CreateTanggapanTable extends Migration
     {
         Schema::create('tanggapan', function (Blueprint $table) {
             $table->bigIncrements('id_tanggapan');
-            $table->integer('id_pengaduan');
+            // $table->integer('id_pengaduan');
             $table->date('tgl_tanggapan');
             $table->text('tanggapan');
             $table->char('nik');

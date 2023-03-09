@@ -3,7 +3,7 @@
 <!--
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
--->
+ -->
 <html lang="en">
 <head>
  @include('Template.head')
@@ -25,46 +25,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Data Pengaduan</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Data Pengaduan</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
+            <h1 class="m-0">Data tanggapan</h1>
+            <html>
+                <head>
+                    <meta charset="utf-8">
+                    <link name="viewport" content="width=device, initial-scale=1">
+                    <meta href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
+                    <title>tanggapan</title>
+                </head>
+        
     <div class="content">
      <div class="card card-info card-outline">
         <div class="card-header">
-           <h3>Tambah Data Pengaduan</h3>
+           <h3>Tambah Data tanggapan</h3>
             </div>
             <div class="card-body">
-               <form action="{{route('simpan-pengaduan')}}" method="post">
+               <form action="{{route('simpan-tanggapan')}}" method="post">
                 {{ csrf_field()}}
                 <div class="form-group">
-                  <input type="date" id="id_pegawai" name="tgl_pengaduan" class="form-control" placeholder="Tanggal pengaduan">
+                  <input type="date" id="id_tanggapan" name="tgl_tanggapan" class="form-control" placeholder="Tanggal tanggapan">
                   </div>
 
                   <div class="form-group">
-                  <input type="text" id="id_pegawai" name="nik" class="form-control" placeholder="NIK">
+                  <input type="text" id="id_tanggapan" name="tanggapan" class="form-control" placeholder="tanggapan">
                   </div>
 
                   <div class="form-group">
-                 <textarea id="id_pegawai" name="isi_laporan" class="form-control" placeholder="Isi Laporan"></textarea>
-                  </div>
-
-                  <div class="form-group">
-                 <input type="file" id="id_pegawai" name="foto" class="form-control" placeholder="">
-                  </div>
-
-                  <div class="form-group">
-                 <textarea id="id_pegawai" name="status" class="form-control" placeholder="Status"></textarea>
+                 <textarea id="id_tanggapan" name="nik" class="form-control" placeholder="nik"></textarea>
                   </div>
 
                   <div class="form-group">

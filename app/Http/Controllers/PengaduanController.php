@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\pengaduan;
+use App\Pengaduan;
 class PengaduanController extends Controller
 {
     /**
@@ -13,8 +13,8 @@ class PengaduanController extends Controller
      */
     public function index()
     {
-        // $pengaduan = Pengaduan::all();
-        return view('pengaduan.index');
+        $pengaduan = Pengaduan::paginate(2);
+        return view('pengaduan.index', compact('pengaduan'));
     }
 
     /**
@@ -35,13 +35,14 @@ class PengaduanController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-    		'tgl_pengaduan' => 'required',
-    		'nik' => 'required',
-            'isi_laporan' => 'required',
-    		'foto' => 'required',
-            'status' => 'required'
-    	]);
+        // dd($request->all());
+        // $this->validate($request,[
+    	// 	'tgl_pengaduan' => 'required',
+    	// 	'nik' => 'required',
+        //     'isi_laporan' => 'required',
+    	// 	'foto' => 'required',
+        //     'status' => 'required'
+    	// ]);
  
         Pengaduan::create([
     		'tgl_pengaduan' => $request->tgl_pengaduan,
@@ -53,7 +54,7 @@ class PengaduanController extends Controller
             
     	]);
  
-    	return redirect('/pengaduan');
+    	return redirect('index')->with('toast_success', 'Data Berhasil Tersimpan!');;
     }
 
     /**
@@ -98,6 +99,7 @@ class PengaduanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Pengaduan::where('id_pengaduan',$id)->delete();
+        return redirect('/index')->with('info', 'Data Berhasil Dihapus');
     }
 }

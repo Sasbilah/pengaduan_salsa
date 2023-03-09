@@ -16,12 +16,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+// Route::get('/register','LoginController@register');
 Route::get('/beranda','BerandaController@index');
 // Route::get('/pengaduan','PengaduanController@index');
-// Route::get('/pengaduan/create','PengaduanController@create');
-// Route::post('/pengaduan/store','PengaduanController@store');
+Route::get('create','PengaduanController@create')->name('create');
+Route::post('/simpan-pengaduan','PengaduanController@store')->name('simpan-pengaduan');
 Route::get('/index','PengaduanController@index')->name('index');
+Route::get('/destroy/{id_pengaduan}', 'PengaduanController@destroy');
 Route::get('/login', function () {
-    return view('user.login');
+    return view('masyarakat.login');
 });
-Route::post('/postlogin','LoginController@postlogin')->name('postlogin');
+// Route::get('/postlogin','LoginController@postlogin')->name('postlogin');
+
+Route::get('/tanggapan/create','TanggapanController@create')->name('/tanggapan/create');
+Route::post('/simpan-Tanggapan','TanggapanController@store')->name('simpan-tanggapan');
+Route::get('/tanggapan/index','TanggapanController@index')->name('/tanggapan/index');
+Route::get('/destroy/{id_tanggapan}', 'TanggapanController@destroy');

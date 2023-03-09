@@ -25,7 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Data Pengaduan</h1>
+            <h1 class="m-0">Data Tanggapan</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -43,38 +43,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
      <div class="card card-info card-outline">
         <div class="card-header">
             <div class="card-tools">
-                <a href="{{route('create')}}" class="btn btn-success">Tambah Data</a>
+                <a href="{{route('/tanggapan/create')}}" class="btn btn-success">Tambah Data</a>
                 </div>
             </div>
             <div class="card-body">
                 <table class="table table-bordered">
                     <tr>
-                       <th>No</th>
-                        <th>tgl_pengaduan</th>
-                        <th>nik</th>
-                        <th>isi_laporan</th>
-                        <th>foto</th>
-                        <th>status</th>
-                        <th>OPSI</th>
+                    <th>No</th>
+                          <th>tgl_tanggapan</th>
+                          <th>tanggapan</th>
+                          <th>nik</th>
+                          <th>OPSI</th>
                     </tr>
-                    @foreach ($pengaduan as $item)
+                    @foreach ($tanggapan as $item)
                    
                     <tr>
-                      <td>{{ $loop->iteration}}</td>
-                        <td>{{date('d-m-y', strtotime ($item->tgl_pengaduan)) }}</td>
-                        <td>{{ $item->nik}}</td>
-                        <td>{{ $item->isi_laporan}}</td>
-                        <td>{{ $item->foto}}</td>
-                        <td>{{ $item->status}}</td>
-                        <td>
-                          <a href="/destroy/{{ $item->id_pengaduan }}" class="fas fa-trash-alt" style="color: red"></a>
+                    <td>{{ $loop->iteration}}</td>
+                          <td>{{date('d-m-y', strtotime ($item->tgl_tanggapan)) }}</td>
+                          <td>{{ $item->tanggapan}}</td>
+                          <td>{{ $item->nik}}</td>
+                          <td>
+                          <a href="/destroy/{{ $item->id_tanggapan }}" class="fas fa-trash-alt" style="color: red"></a>
                         </td>
                     </tr>
                     @endforeach
          </table>
     </div>
     <div class="card-footer">
-    {{ $pengaduan->links() }}
+    <!-- -->
     </div>
 </div>
     </div>
