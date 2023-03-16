@@ -3,7 +3,7 @@
 <!--
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
- -->
+-->
 <html lang="en">
 <head>
  @include('Template.head')
@@ -21,46 +21,88 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
+<div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
+          <div class="col-sm-6">    
+            <!-- <h1 class="m-0">Data tanggapan</h1> -->
+          </div><!-- /.col -->
           <div class="col-sm-6">
-            <h1 class="m-0">Data tanggapan</h1>
-            <html>
-                <head>
-                    <meta charset="utf-8">
-                    <link name="viewport" content="width=device, initial-scale=1">
-                    <meta href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
-                    <title>tanggapan</title>
-                </head>
-        
+            <ol class="breadcrumb float-sm-right">
+              <!-- <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Data tanggapan</li> -->
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
     <div class="content">
      <div class="card card-info card-outline">
         <div class="card-header">
            <h3>Tambah Data tanggapan</h3>
             </div>
             <div class="card-body">
-               <form action="{{route('simpan-tanggapan')}}" method="post">
+               <form action="{{route('simpan-tanggapan')}}" method="post" >
                 {{ csrf_field()}}
                 <div class="form-group">
-                  <input type="date" id="id_tanggapan" name="tgl_tanggapan" class="form-control" placeholder="Tanggal tanggapan">
-                  </div>
+                            <label class="col-lg-4 col-form-label" for="val-tanggal_kerusakan">Pengaduan  </label>
+                            <div class="col-lg-6">
+                                <select name="id_pengaduan" id="" class="form-control">
+                                    <option value="">-- Pilih Pengaduan --</option>
+                                    <!-- Barang -->
+                                    @foreach($pengaduan as $pengaduan)
+                                        <option value="{{ $pengaduan->id_pengaduan }}">{{ $pengaduan->isi_laporan }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
 
-                  <div class="form-group">
-                  <input type="text" id="id_tanggapan" name="tanggapan" class="form-control" placeholder="tanggapan">
-                  </div>
+                        <div class="form-group">
+                            <label>Tanggal Tanggapan</label>
+                            <input type="date" name="tgl_tanggapan" class="form-control" placeholder=""></input>
 
-                  <div class="form-group">
-                 <textarea id="id_tanggapan" name="nik" class="form-control" placeholder="nik"></textarea>
-                  </div>
+                            @if($errors->has('tgl_tanggapan'))
+                                <div class="text-danger">
+                                    {{ $errors->first('tgl_tanggapan')}}
+                                </div>
+                            @endif
+                        </div>
 
-                  <div class="form-group">
-                    <button type="submit" class="btn btn-success">Simpan Data</button>
-</div>
-               </form>
-    </div>
-</div>
-    </div>
+                        <div class="form-group">
+                            <label>Tanggapan</label>
+                            <input type="text" name="tanggapan" class="form-control"></input>
+
+                             @if($errors->has('tanggapan'))
+                                <div class="text-danger">
+                                    {{ $errors->first('tanggapan')}}
+                                </div>
+                            @endif
+                        </div>
+
+                        <div class="form-group">
+                            <label>NIK</label>
+                            <input type="text" name="nik" class="form-control"></input>
+
+                             @if($errors->has('nik'))
+                                <div class="text-danger">
+                                    {{ $errors->first('nik')}}
+                                </div>
+                            @endif
+                        </div>
+
+                        <div class="form-group">
+                            <a href="/tanggapan" class="btn btn-primary">Kembali</a>
+                            <input type="submit" class="btn btn-success" value="Simpan">
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pengaduan;
+use App\Tanggapan;
+use Iluminate\Support\Facades\DB;
 class PengaduanController extends Controller
 {
     /**
@@ -13,8 +15,9 @@ class PengaduanController extends Controller
      */
     public function index()
     {
-        $pengaduan = Pengaduan::paginate(2);
-        return view('pengaduan.index', compact('pengaduan'));
+        $tanggapan = Tanggapan::all();
+        $pengaduan = Pengaduan::all();
+        return view('pengaduan.index', compact('pengaduan','tanggapan'));
     }
 
     /**
@@ -24,7 +27,8 @@ class PengaduanController extends Controller
      */
     public function create()
     {
-        return view('pengaduan.create');
+        $pengaduan = Pengaduan::all();
+        return view('pengaduan.create', compact('pengaduan'));
     }
 
     /**
@@ -35,26 +39,27 @@ class PengaduanController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        // $this->validate($request,[
-    	// 	'tgl_pengaduan' => 'required',
-    	// 	'nik' => 'required',
-        //     'isi_laporan' => 'required',
-    	// 	'foto' => 'required',
-        //     'status' => 'required'
-    	// ]);
- 
-        Pengaduan::create([
-    		'tgl_pengaduan' => $request->tgl_pengaduan,
-    		'nik' => $request->nik,
-            'isi_laporan' => $request->isi_laporan,
-    		'foto' => $request->foto,
-            'status' => $request->status,
+        $this->validate($request,[
+            'tgl_pengaduan' => 'required',
+            'nik' => 'required',
+            'isi_laporan' => 'required',
+            'foto' => 'required',
+            'status' => 'required'
 
-            
-    	]);
- 
-    	return redirect('index')->with('toast_success', 'Data Berhasil Tersimpan!');;
+        ]);
+        $imgName = $request->foto->getClientOriginalName() . '-' . time() . '-' . $request->foto->extension();
+        $request->foto->move(public_path('image'),$imgName);
+
+        Pengaduan::create([
+            'tgl_pengaduan' => $request->tgl_pengaduan,
+            'nik' => $request->nik,
+            'isi_laporan' => $request->isi_laporan,
+            'foto' => $imgName,
+            'status' => $request->status
+
+        ]);
+
+    	return redirect('/index')->with('toast_success', 'Data Berhasil Tersimpan!');;
     }
 
     /**
@@ -99,7 +104,18 @@ class PengaduanController extends Controller
      */
     public function destroy($id)
     {
-        Pengaduan::where('id_pengaduan',$id)->delete();
+        $pengaduan = Pengaduan::find($id);
+        $pengaduan->delete();
+
+        Pengaduan::where('id_pengaduan','$id')->delete();
         return redirect('/index')->with('info', 'Data Berhasil Dihapus');
+    }
+    public function cetakform(){
+        return view('pengaduan.cetak');
+    }
+    public function cetak_pdf($id){
+        // dd(["Tanggal awal: ".$tglawal, "Tanggal akhir: ".$tglakhir]);
+        $pengaduan= Pengaduan::find($id);
+        return view('pengaduan.cetak-pengaduan-pertanggal', compact('pengaduan'));
     }
 }

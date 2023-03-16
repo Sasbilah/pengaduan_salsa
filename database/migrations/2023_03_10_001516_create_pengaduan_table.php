@@ -14,13 +14,13 @@ class CreatePengaduanTable extends Migration
     public function up()
     {
         Schema::create('pengaduan', function (Blueprint $table) {
-            $table->bigIncrements('id_pengaduan');
-            $table->date('tgl_pengaduan');
-            $table->char('nik');
-            $table->text('isi_laporan');
-            $table->string('foto');
-            $table->string('status');
-            $table->timestamps();
+                $table->bigIncrements('id_pengaduan');
+                $table->date('tgl_pengaduan');
+                $table->char('nik');
+                $table->text('isi_laporan');
+                $table->string('foto');
+                $table->string('status');
+                $table->timestamps();
         });
     }
 

@@ -25,7 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Data Pengaduan</h1>
+            <!-- <h1 class="m-0">Data Pengaduan</h1> -->
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -45,26 +45,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
            <h3>Tambah Data Pengaduan</h3>
             </div>
             <div class="card-body">
-               <form action="{{route('simpan-pengaduan')}}" method="post">
+               <form action="{{route('simpan-pengaduan')}}" method="post" enctype="multipart/form-data">
                 {{ csrf_field()}}
                 <div class="form-group">
-                  <input type="date" id="id_pegawai" name="tgl_pengaduan" class="form-control" placeholder="Tanggal pengaduan">
+                  <input type="date" id="id_pengaduan" name="tgl_pengaduan" class="form-control" placeholder="Tanggal pengaduan">
                   </div>
 
                   <div class="form-group">
-                  <input type="text" id="id_pegawai" name="nik" class="form-control" placeholder="NIK">
+                  <input type="number" id="id_pengaduan" name="nik" class="form-control" placeholder="NIK">
                   </div>
 
                   <div class="form-group">
-                 <textarea id="id_pegawai" name="isi_laporan" class="form-control" placeholder="Isi Laporan"></textarea>
+                 <textarea id="id_pengaduan" name="isi_laporan" class="form-control" placeholder="Isi Laporan"></textarea>
                   </div>
 
                   <div class="form-group">
-                 <input type="file" id="id_pegawai" name="foto" class="form-control" placeholder="">
+                 <input type="file" id="id_pengaduan" name="foto" class="form-control" placeholder="">
                   </div>
 
                   <div class="form-group">
-                 <textarea id="id_pegawai" name="status" class="form-control" placeholder="Status"></textarea>
+                 <strong>status</strong>
+                 <br>
+                 <input type="radio" name="status" value="proses"> Proses</p>
+                 <input type="radio" name="status" value="proses"> Selesai</p>
                   </div>
 
                   <div class="form-group">

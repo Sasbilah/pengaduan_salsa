@@ -64,17 +64,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <td>{{date('d-m-y', strtotime ($item->tgl_pengaduan)) }}</td>
                         <td>{{ $item->nik}}</td>
                         <td>{{ $item->isi_laporan}}</td>
-                        <td>{{ $item->foto}}</td>
+                        <td><img src="{{ asset('image/'. $item->foto) }}" height="100"width= "100" alt="pengaduan"></td>
                         <td>{{ $item->status}}</td>
                         <td>
-                          <a href="/destroy/{{ $item->id_pengaduan }}" class="fas fa-trash-alt" style="color: red"></a>
+                          <a href="/destroy/{{ $item->id_pengaduan }}" class="fas fa-trash-alt" style="color: red"></a> ||
+                          <a href="/cetak_pdf/{{ $item->id_pengaduan }}" class="fas fa-print" style="color: blue"></a>
                         </td>
                     </tr>
                     @endforeach
          </table>
     </div>
     <div class="card-footer">
-    {{ $pengaduan->links() }}
     </div>
 </div>
     </div>
